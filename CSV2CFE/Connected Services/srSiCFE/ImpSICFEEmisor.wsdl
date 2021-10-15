@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ImpSICFEEmisor" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SICFEContract" />
+      <xsd:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISICFEEmisor_EnvioCFE_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_EnvioCFE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_EnvioCFEConReceptor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFEConReceptor" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_EnvioCFEConReceptor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFEConReceptorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ValidarEnvioCFE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEnvioCFE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ValidarEnvioCFE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEnvioCFEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_RechazarCFERecibido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RechazarCFERecibido" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_RechazarCFERecibido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RechazarCFERecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AceptarCFERecibido_InputMessage">
+    <wsdl:part name="parameters" element="tns:AceptarCFERecibido" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AceptarCFERecibido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AceptarCFERecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDF" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerPDFSinProcesar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDFSinProcesar" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerPDFSinProcesar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDFSinProcesarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerXML_DGI_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXML_DGI" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerXML_DGI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXML_DGIResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerRecursosImpresion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRecursosImpresion" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerRecursosImpresion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRecursosImpresionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_Reimprimir_InputMessage">
+    <wsdl:part name="parameters" element="tns:Reimprimir" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_Reimprimir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReimprimirResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEsRecibidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEsRecibidos" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEsRecibidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEsRecibidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ActualizarReceptoresNoElectronicos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarReceptoresNoElectronicos" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ActualizarReceptoresNoElectronicos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarReceptoresNoElectronicosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerReceptoresNoElectronicos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReceptoresNoElectronicos" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerReceptoresNoElectronicos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReceptoresNoElectronicosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEsRecibidosExtendido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEsRecibidosExtendido" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEsRecibidosExtendido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEsRecibidosExtendidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConfirmarCFE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarCFE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConfirmarCFE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarCFEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ReservarNro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReservarNro" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ReservarNro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReservarNroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_PingSICFEEmisor_InputMessage">
+    <wsdl:part name="parameters" element="tns:PingSICFEEmisor" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_PingSICFEEmisor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingSICFEEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AnularRango_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnularRango" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AnularRango_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnularRangoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AnularNumeracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnularNumeracion" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AnularNumeracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnularNumeracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerEstadoCFE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEstadoCFE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerEstadoCFE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEstadoCFEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCAE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCAE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCAE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCAEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerTemplatesImpresion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTemplatesImpresion" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerTemplatesImpresion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTemplatesImpresionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConsolidarComprobantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsolidarComprobantes" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConsolidarComprobantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsolidarComprobantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerProveedoresElectronicos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerProveedoresElectronicos" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerProveedoresElectronicos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerProveedoresElectronicosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerClientesElectronicos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerClientesElectronicos" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerClientesElectronicos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerClientesElectronicosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerVersion" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConfirmarCFERecibido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarCFERecibido" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ConfirmarCFERecibido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarCFERecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_DesconfirmarCFERecibido_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesconfirmarCFERecibido" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_DesconfirmarCFERecibido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesconfirmarCFERecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerInfoCertificados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoCertificados" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerInfoCertificados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoCertificadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_EsEmisorReceptorElectronico_InputMessage">
+    <wsdl:part name="parameters" element="tns:EsEmisorReceptorElectronico" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_EsEmisorReceptorElectronico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EsEmisorReceptorElectronicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerDatosDeEmisorReceptor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDatosDeEmisorReceptor" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerDatosDeEmisorReceptor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDatosDeEmisorReceptorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEPorReferencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEPorReferencia" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEPorReferencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEPorReferenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEPorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEPorID" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCFEPorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCFEPorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCierreDeCaja_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCierreDeCaja" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ObtenerCierreDeCaja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCierreDeCajaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AgregarCAE_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarCAE" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_AgregarCAE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarCAEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ReenvioComprobante_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReenvioComprobante" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisor_ReenvioComprobante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReenvioComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisorSinValidar_EnvioCFESinFirmar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFESinFirmar" />
+  </wsdl:message>
+  <wsdl:message name="ISICFEEmisorSinValidar_EnvioCFESinFirmar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnvioCFESinFirmarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISICFEEmisor">
+    <wsdl:operation name="EnvioCFE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/EnvioCFE" message="tns:ISICFEEmisor_EnvioCFE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/EnvioCFEResponse" message="tns:ISICFEEmisor_EnvioCFE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCFEConReceptor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/EnvioCFEConReceptor" message="tns:ISICFEEmisor_EnvioCFEConReceptor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/EnvioCFEConReceptorResponse" message="tns:ISICFEEmisor_EnvioCFEConReceptor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEnvioCFE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ValidarEnvioCFE" message="tns:ISICFEEmisor_ValidarEnvioCFE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ValidarEnvioCFEResponse" message="tns:ISICFEEmisor_ValidarEnvioCFE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RechazarCFERecibido">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/RechazarCFERecibido" message="tns:ISICFEEmisor_RechazarCFERecibido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/RechazarCFERecibidoResponse" message="tns:ISICFEEmisor_RechazarCFERecibido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AceptarCFERecibido">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/AceptarCFERecibido" message="tns:ISICFEEmisor_AceptarCFERecibido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/AceptarCFERecibidoResponse" message="tns:ISICFEEmisor_AceptarCFERecibido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerPDF" message="tns:ISICFEEmisor_ObtenerPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerPDFResponse" message="tns:ISICFEEmisor_ObtenerPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDFSinProcesar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerPDFSinProcesar" message="tns:ISICFEEmisor_ObtenerPDFSinProcesar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerPDFSinProcesarResponse" message="tns:ISICFEEmisor_ObtenerPDFSinProcesar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerXML_DGI">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerXML_DGI" message="tns:ISICFEEmisor_ObtenerXML_DGI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerXML_DGIResponse" message="tns:ISICFEEmisor_ObtenerXML_DGI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRecursosImpresion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerRecursosImpresion" message="tns:ISICFEEmisor_ObtenerRecursosImpresion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerRecursosImpresionResponse" message="tns:ISICFEEmisor_ObtenerRecursosImpresion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reimprimir">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/Reimprimir" message="tns:ISICFEEmisor_Reimprimir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ReimprimirResponse" message="tns:ISICFEEmisor_Reimprimir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEsRecibidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidos" message="tns:ISICFEEmisor_ObtenerCFEsRecibidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidosResponse" message="tns:ISICFEEmisor_ObtenerCFEsRecibidos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceptoresNoElectronicos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ActualizarReceptoresNoElectronicos" message="tns:ISICFEEmisor_ActualizarReceptoresNoElectronicos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ActualizarReceptoresNoElectronicosResponse" message="tns:ISICFEEmisor_ActualizarReceptoresNoElectronicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReceptoresNoElectronicos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerReceptoresNoElectronicos" message="tns:ISICFEEmisor_ObtenerReceptoresNoElectronicos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerReceptoresNoElectronicosResponse" message="tns:ISICFEEmisor_ObtenerReceptoresNoElectronicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEsRecibidosExtendido">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidosExtendido" message="tns:ISICFEEmisor_ObtenerCFEsRecibidosExtendido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidosExtendidoResponse" message="tns:ISICFEEmisor_ObtenerCFEsRecibidosExtendido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarCFE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ConfirmarCFE" message="tns:ISICFEEmisor_ConfirmarCFE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ConfirmarCFEResponse" message="tns:ISICFEEmisor_ConfirmarCFE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReservarNro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ReservarNro" message="tns:ISICFEEmisor_ReservarNro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ReservarNroResponse" message="tns:ISICFEEmisor_ReservarNro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PingSICFEEmisor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/PingSICFEEmisor" message="tns:ISICFEEmisor_PingSICFEEmisor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/PingSICFEEmisorResponse" message="tns:ISICFEEmisor_PingSICFEEmisor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularRango">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/AnularRango" message="tns:ISICFEEmisor_AnularRango_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/AnularRangoResponse" message="tns:ISICFEEmisor_AnularRango_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularNumeracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/AnularNumeracion" message="tns:ISICFEEmisor_AnularNumeracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/AnularNumeracionResponse" message="tns:ISICFEEmisor_AnularNumeracion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEstadoCFE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerEstadoCFE" message="tns:ISICFEEmisor_ObtenerEstadoCFE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerEstadoCFEResponse" message="tns:ISICFEEmisor_ObtenerEstadoCFE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCAE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCAE" message="tns:ISICFEEmisor_ObtenerCAE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCAEResponse" message="tns:ISICFEEmisor_ObtenerCAE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTemplatesImpresion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerTemplatesImpresion" message="tns:ISICFEEmisor_ObtenerTemplatesImpresion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerTemplatesImpresionResponse" message="tns:ISICFEEmisor_ObtenerTemplatesImpresion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsolidarComprobantes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ConsolidarComprobantes" message="tns:ISICFEEmisor_ConsolidarComprobantes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ConsolidarComprobantesResponse" message="tns:ISICFEEmisor_ConsolidarComprobantes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerProveedoresElectronicos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerProveedoresElectronicos" message="tns:ISICFEEmisor_ObtenerProveedoresElectronicos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerProveedoresElectronicosResponse" message="tns:ISICFEEmisor_ObtenerProveedoresElectronicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerClientesElectronicos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerClientesElectronicos" message="tns:ISICFEEmisor_ObtenerClientesElectronicos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerClientesElectronicosResponse" message="tns:ISICFEEmisor_ObtenerClientesElectronicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerVersion" message="tns:ISICFEEmisor_ObtenerVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerVersionResponse" message="tns:ISICFEEmisor_ObtenerVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarCFERecibido">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ConfirmarCFERecibido" message="tns:ISICFEEmisor_ConfirmarCFERecibido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ConfirmarCFERecibidoResponse" message="tns:ISICFEEmisor_ConfirmarCFERecibido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesconfirmarCFERecibido">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/DesconfirmarCFERecibido" message="tns:ISICFEEmisor_DesconfirmarCFERecibido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/DesconfirmarCFERecibidoResponse" message="tns:ISICFEEmisor_DesconfirmarCFERecibido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoCertificados">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerInfoCertificados" message="tns:ISICFEEmisor_ObtenerInfoCertificados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerInfoCertificadosResponse" message="tns:ISICFEEmisor_ObtenerInfoCertificados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EsEmisorReceptorElectronico">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/EsEmisorReceptorElectronico" message="tns:ISICFEEmisor_EsEmisorReceptorElectronico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/EsEmisorReceptorElectronicoResponse" message="tns:ISICFEEmisor_EsEmisorReceptorElectronico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDatosDeEmisorReceptor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerDatosDeEmisorReceptor" message="tns:ISICFEEmisor_ObtenerDatosDeEmisorReceptor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerDatosDeEmisorReceptorResponse" message="tns:ISICFEEmisor_ObtenerDatosDeEmisorReceptor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEPorReferencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorReferencia" message="tns:ISICFEEmisor_ObtenerCFEPorReferencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorReferenciaResponse" message="tns:ISICFEEmisor_ObtenerCFEPorReferencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEPorID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorID" message="tns:ISICFEEmisor_ObtenerCFEPorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorIDResponse" message="tns:ISICFEEmisor_ObtenerCFEPorID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCierreDeCaja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCierreDeCaja" message="tns:ISICFEEmisor_ObtenerCierreDeCaja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ObtenerCierreDeCajaResponse" message="tns:ISICFEEmisor_ObtenerCierreDeCaja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarCAE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/AgregarCAE" message="tns:ISICFEEmisor_AgregarCAE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/AgregarCAEResponse" message="tns:ISICFEEmisor_AgregarCAE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReenvioComprobante">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisor/ReenvioComprobante" message="tns:ISICFEEmisor_ReenvioComprobante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisor/ReenvioComprobanteResponse" message="tns:ISICFEEmisor_ReenvioComprobante_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISICFEEmisorSinValidar">
+    <wsdl:operation name="EnvioCFESinFirmar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISICFEEmisorSinValidar/EnvioCFESinFirmar" message="tns:ISICFEEmisorSinValidar_EnvioCFESinFirmar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISICFEEmisorSinValidar/EnvioCFESinFirmarResponse" message="tns:ISICFEEmisorSinValidar_EnvioCFESinFirmar_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISICFEEmisor" type="tns:ISICFEEmisor">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnvioCFE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/EnvioCFE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCFEConReceptor">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/EnvioCFEConReceptor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEnvioCFE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ValidarEnvioCFE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RechazarCFERecibido">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/RechazarCFERecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AceptarCFERecibido">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/AceptarCFERecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDF">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDFSinProcesar">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerPDFSinProcesar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerXML_DGI">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerXML_DGI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRecursosImpresion">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerRecursosImpresion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reimprimir">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/Reimprimir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEsRecibidos">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceptoresNoElectronicos">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ActualizarReceptoresNoElectronicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReceptoresNoElectronicos">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerReceptoresNoElectronicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEsRecibidosExtendido">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCFEsRecibidosExtendido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarCFE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ConfirmarCFE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReservarNro">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ReservarNro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PingSICFEEmisor">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/PingSICFEEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularRango">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/AnularRango" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularNumeracion">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/AnularNumeracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEstadoCFE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerEstadoCFE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCAE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCAE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTemplatesImpresion">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerTemplatesImpresion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsolidarComprobantes">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ConsolidarComprobantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerProveedoresElectronicos">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerProveedoresElectronicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerClientesElectronicos">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerClientesElectronicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerVersion">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarCFERecibido">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ConfirmarCFERecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesconfirmarCFERecibido">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/DesconfirmarCFERecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoCertificados">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerInfoCertificados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsEmisorReceptorElectronico">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/EsEmisorReceptorElectronico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDatosDeEmisorReceptor">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerDatosDeEmisorReceptor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEPorReferencia">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorReferencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCFEPorID">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCFEPorID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCierreDeCaja">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ObtenerCierreDeCaja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarCAE">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/AgregarCAE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReenvioComprobante">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisor/ReenvioComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ISICFEEmisorSinValidar" type="tns:ISICFEEmisorSinValidar">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnvioCFESinFirmar">
+      <soap:operation soapAction="http://tempuri.org/ISICFEEmisorSinValidar/EnvioCFESinFirmar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImpSICFEEmisor">
+    <wsdl:port name="BasicHttpBinding_ISICFEEmisor" binding="tns:BasicHttpBinding_ISICFEEmisor">
+      <soap:address location="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ISICFEEmisorSinValidar" binding="tns:BasicHttpBinding_ISICFEEmisorSinValidar">
+      <soap:address location="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

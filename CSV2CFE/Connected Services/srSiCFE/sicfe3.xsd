@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SICFEContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SICFEContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="SICFERespuestaEnvioCFE">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EsReceptorElectronico" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IdCFE" nillable="true" type="tns:IdCFE" />
+          <xs:element minOccurs="0" name="ImagenQR" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LinkQR" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="datosCAE" nillable="true" type="tns:datosCAE" />
+          <xs:element minOccurs="0" name="hash" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaEnvioCFE" nillable="true" type="tns:SICFERespuestaEnvioCFE" />
+  <xs:complexType name="SICFERespuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SICFERespuesta" nillable="true" type="tns:SICFERespuesta" />
+  <xs:complexType name="IdCFE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+      <xs:element minOccurs="0" name="observado" type="xs:int" />
+      <xs:element minOccurs="0" name="rucemisor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IdCFE" nillable="true" type="tns:IdCFE" />
+  <xs:complexType name="datosCAE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dnro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="fvto" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hnro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="nauto" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="datosCAE" nillable="true" type="tns:datosCAE" />
+  <xs:complexType name="ArrayOfRechazoAcuseRecibo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RechazoAcuseRecibo" nillable="true" type="tns:RechazoAcuseRecibo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRechazoAcuseRecibo" nillable="true" type="tns:ArrayOfRechazoAcuseRecibo" />
+  <xs:complexType name="RechazoAcuseRecibo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RechazoAcuseRecibo" nillable="true" type="tns:RechazoAcuseRecibo" />
+  <xs:complexType name="SICFERespuestaBuffer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Buffer" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaBuffer" nillable="true" type="tns:SICFERespuestaBuffer" />
+  <xs:complexType name="SICFERespuestaObtenerXML">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaObtenerXML" nillable="true" type="tns:SICFERespuestaObtenerXML" />
+  <xs:complexType name="RespuestaObtenerRecursosImpresion">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ListRecursosImpresion" nillable="true" type="tns:ArrayOfImpresora" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespuestaObtenerRecursosImpresion" nillable="true" type="tns:RespuestaObtenerRecursosImpresion" />
+  <xs:complexType name="ArrayOfImpresora">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Impresora" nillable="true" type="tns:Impresora" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImpresora" nillable="true" type="tns:ArrayOfImpresora" />
+  <xs:complexType name="Impresora">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Papel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PorDefecto" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Impresora" nillable="true" type="tns:Impresora" />
+  <xs:complexType name="SICFERespuestaReimpresion">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResultadosPorCFE" nillable="true" type="tns:ArrayOfResultadoReimpresion" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaReimpresion" nillable="true" type="tns:SICFERespuestaReimpresion" />
+  <xs:complexType name="ArrayOfResultadoReimpresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultadoReimpresion" nillable="true" type="tns:ResultadoReimpresion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultadoReimpresion" nillable="true" type="tns:ArrayOfResultadoReimpresion" />
+  <xs:complexType name="ResultadoReimpresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CFE" nillable="true" type="tns:IdCFE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultadoReimpresion" nillable="true" type="tns:ResultadoReimpresion" />
+  <xs:complexType name="RespuestaObtenerCFEsRecibidos">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CFEsRecibidos" nillable="true" type="tns:ArrayOfCFERecibidoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespuestaObtenerCFEsRecibidos" nillable="true" type="tns:RespuestaObtenerCFEsRecibidos" />
+  <xs:complexType name="ArrayOfCFERecibidoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CFERecibidoDTO" nillable="true" type="tns:CFERecibidoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCFERecibidoDTO" nillable="true" type="tns:ArrayOfCFERecibidoDTO" />
+  <xs:complexType name="CFERecibidoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEmision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:long" />
+      <xs:element minOccurs="0" name="RucEmisor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+      <xs:element minOccurs="0" name="XML" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CFERecibidoDTO" nillable="true" type="tns:CFERecibidoDTO" />
+  <xs:complexType name="DataReceptorNoElectronico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodPais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Doc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDoc" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataReceptorNoElectronico" nillable="true" type="tns:DataReceptorNoElectronico" />
+  <xs:complexType name="RespuestaObtenerReceptoresNoElectronicos">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReceptoresNoElectronicos" nillable="true" type="tns:ArrayOfDatosReceptoresNoElectronicos" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespuestaObtenerReceptoresNoElectronicos" nillable="true" type="tns:RespuestaObtenerReceptoresNoElectronicos" />
+  <xs:complexType name="ArrayOfDatosReceptoresNoElectronicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosReceptoresNoElectronicos" nillable="true" type="tns:DatosReceptoresNoElectronicos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosReceptoresNoElectronicos" nillable="true" type="tns:ArrayOfDatosReceptoresNoElectronicos" />
+  <xs:complexType name="DatosReceptoresNoElectronicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoPais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaModificacion" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosReceptoresNoElectronicos" nillable="true" type="tns:DatosReceptoresNoElectronicos" />
+  <xs:complexType name="RespuestaObtenerCFEsRecibidosExtendido">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CFEsRecibidos" nillable="true" type="tns:ArrayOfCFERecibidoExtendidoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespuestaObtenerCFEsRecibidosExtendido" nillable="true" type="tns:RespuestaObtenerCFEsRecibidosExtendido" />
+  <xs:complexType name="ArrayOfCFERecibidoExtendidoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CFERecibidoExtendidoDTO" nillable="true" type="tns:CFERecibidoExtendidoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCFERecibidoExtendidoDTO" nillable="true" type="tns:ArrayOfCFERecibidoExtendidoDTO" />
+  <xs:complexType name="CFERecibidoExtendidoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DesdeNroCAE" type="xs:int" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEmision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaProcesado" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaVencimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaVencimientoCAE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormaPago" nillable="true" type="xs:short" />
+      <xs:element minOccurs="0" name="HastaNroCAE" type="xs:int" />
+      <xs:element minOccurs="0" name="MntPagar" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MntTotCreditoFiscal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MntTotRetenido" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Moneda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreComercial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:long" />
+      <xs:element minOccurs="0" name="NumeroAutorizacionCAE" type="xs:long" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RucEmisor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+      <xs:element minOccurs="0" name="XML" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CFERecibidoExtendidoDTO" nillable="true" type="tns:CFERecibidoExtendidoDTO" />
+  <xs:complexType name="ReservarNro">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FVencimiento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Nro" type="xs:int" />
+          <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+          <xs:element minOccurs="0" name="nauto" nillable="true" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReservarNro" nillable="true" type="tns:ReservarNro" />
+  <xs:complexType name="SICFERespuestaPing">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Testing" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaPing" nillable="true" type="tns:SICFERespuestaPing" />
+  <xs:complexType name="SICFERespuestaEstadoCFE">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodRechazo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MotRechazo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaEstadoCFE" nillable="true" type="tns:SICFERespuestaEstadoCFE" />
+  <xs:complexType name="RespuestaObtenerCAE">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CAEList" nillable="true" type="tns:ArrayOfDatoCAE" />
+          <xs:element minOccurs="0" name="CantidadTotal" type="xs:int" />
+          <xs:element minOccurs="0" name="HayMasRegistros" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ListaNumerador" nillable="true" type="tns:ArrayOfDataNumerador" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespuestaObtenerCAE" nillable="true" type="tns:RespuestaObtenerCAE" />
+  <xs:complexType name="ArrayOfDatoCAE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatoCAE" nillable="true" type="tns:DatoCAE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatoCAE" nillable="true" type="tns:ArrayOfDatoCAE" />
+  <xs:complexType name="DatoCAE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdNumerador" type="xs:int" />
+      <xs:element minOccurs="0" name="IdNumeradorClave" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="cantusados" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="dnro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="fanulacion" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="femision" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fvto" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hnro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="nauto" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sucursal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="tauto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ultnro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatoCAE" nillable="true" type="tns:DatoCAE" />
+  <xs:complexType name="ArrayOfDataNumerador">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataNumerador" nillable="true" type="tns:DataNumerador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataNumerador" nillable="true" type="tns:ArrayOfDataNumerador" />
+  <xs:complexType name="DataNumerador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Clave" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsComodin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdInstalacion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdNumerador" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreInstalacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sincronizado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tenant" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataNumerador" nillable="true" type="tns:DataNumerador" />
+  <xs:complexType name="ObtenerTemplateImpresionRespuesta">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ListTemplatesImpresion" nillable="true" type="tns:ArrayOfDatoTemplateImpresion" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListTemplatesImpresionConClave" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ObtenerTemplateImpresionRespuesta" nillable="true" type="tns:ObtenerTemplateImpresionRespuesta" />
+  <xs:complexType name="ArrayOfDatoTemplateImpresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatoTemplateImpresion" nillable="true" type="tns:DatoTemplateImpresion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatoTemplateImpresion" nillable="true" type="tns:ArrayOfDatoTemplateImpresion" />
+  <xs:complexType name="DatoTemplateImpresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodTemplate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstiloTemplate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPlantilla" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="TemplateNombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatoTemplateImpresion" nillable="true" type="tns:DatoTemplateImpresion" />
+  <xs:complexType name="SicfeRespuestaConsolidar">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Comprobantes" nillable="true" type="tns:ArrayOfDataCfe" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SicfeRespuestaConsolidar" nillable="true" type="tns:SicfeRespuestaConsolidar" />
+  <xs:complexType name="ArrayOfDataCfe">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataCfe" nillable="true" type="tns:DataCfe" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataCfe" nillable="true" type="tns:ArrayOfDataCfe" />
+  <xs:complexType name="DataCfe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EstadoDGI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEmision" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MontoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferenciaErp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCfe" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataCfe" nillable="true" type="tns:DataCfe" />
+  <xs:complexType name="SICFERespuestaObtenerProveedoresElectronicos">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Proveedores" nillable="true" type="tns:ArrayOfProveedorElectronico" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaObtenerProveedoresElectronicos" nillable="true" type="tns:SICFERespuestaObtenerProveedoresElectronicos" />
+  <xs:complexType name="ArrayOfProveedorElectronico">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProveedorElectronico" nillable="true" type="tns:ProveedorElectronico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProveedorElectronico" nillable="true" type="tns:ArrayOfProveedorElectronico" />
+  <xs:complexType name="ProveedorElectronico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ruc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProveedorElectronico" nillable="true" type="tns:ProveedorElectronico" />
+  <xs:complexType name="SICFERespuestaObtenerClientesElectronicos">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Clientes" nillable="true" type="tns:ArrayOfClienteElectronico" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaObtenerClientesElectronicos" nillable="true" type="tns:SICFERespuestaObtenerClientesElectronicos" />
+  <xs:complexType name="ArrayOfClienteElectronico">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClienteElectronico" nillable="true" type="tns:ClienteElectronico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClienteElectronico" nillable="true" type="tns:ArrayOfClienteElectronico" />
+  <xs:complexType name="ClienteElectronico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ruc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClienteElectronico" nillable="true" type="tns:ClienteElectronico" />
+  <xs:complexType name="SICFERespuestaVersion">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VersionBD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionSvc" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaVersion" nillable="true" type="tns:SICFERespuestaVersion" />
+  <xs:complexType name="SICFERespuestaCertificados">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Certificados" nillable="true" type="tns:ArrayOfCertificado" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaCertificados" nillable="true" type="tns:SICFERespuestaCertificados" />
+  <xs:complexType name="ArrayOfCertificado">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Certificado" nillable="true" type="tns:Certificado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCertificado" nillable="true" type="tns:ArrayOfCertificado" />
+  <xs:complexType name="Certificado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DiasRestantes" type="xs:int" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VigenciaDesde" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VigenciaHasta" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Certificado" nillable="true" type="tns:Certificado" />
+  <xs:complexType name="SICFERespuestaEmisorReceptorElectronico">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Electronico" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EmailIntercambio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaEmisorReceptorElectronico" nillable="true" type="tns:SICFERespuestaEmisorReceptorElectronico" />
+  <xs:complexType name="SICFERespuestaDatosEmisorReceptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EmailIntercambio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaFinTransicion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RUC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaDatosEmisorReceptor" nillable="true" type="tns:SICFERespuestaDatosEmisorReceptor" />
+  <xs:complexType name="SICFERespuestaObtenerCFE">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="docreceptor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="estadoEnvioReceptorNE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="estadoenvioDGI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="estadoenvioreceptor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechafirma" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="femision" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fyhrecibido" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="imagenQR" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="linkQR" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="numero" type="xs:int" />
+          <xs:element minOccurs="0" name="observado" type="xs:int" />
+          <xs:element minOccurs="0" name="referenciaerp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+          <xs:element minOccurs="0" name="tipo" type="xs:int" />
+          <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaObtenerCFE" nillable="true" type="tns:SICFERespuestaObtenerCFE" />
+  <xs:complexType name="SICFERespuestaInformeCierreDeCaja">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SICFERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Informe" nillable="true" type="tns:InformeCierreDeCaja" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SICFERespuestaInformeCierreDeCaja" nillable="true" type="tns:SICFERespuestaInformeCierreDeCaja" />
+  <xs:complexType name="InformeCierreDeCaja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadesCFE" nillable="true" type="tns:ArrayOfDatosCantidadCFE" />
+      <xs:element minOccurs="0" name="FechaGenerado" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MontosVentas" nillable="true" type="tns:ArrayOfDatosMontoVenta" />
+      <xs:element minOccurs="0" name="NumeracionUtilizada" nillable="true" type="tns:ArrayOfDatosResumenCAE" />
+      <xs:element minOccurs="0" name="PuntoVenta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RucEmisor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UltimosCFE" nillable="true" type="tns:ArrayOfDatosResumenCFE" />
+      <xs:element minOccurs="0" name="UsuarioGenerado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InformeCierreDeCaja" nillable="true" type="tns:InformeCierreDeCaja" />
+  <xs:complexType name="ArrayOfDatosCantidadCFE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosCantidadCFE" nillable="true" type="tns:DatosCantidadCFE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosCantidadCFE" nillable="true" type="tns:ArrayOfDatosCantidadCFE" />
+  <xs:complexType name="DatosCantidadCFE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadContado" type="xs:int" />
+      <xs:element minOccurs="0" name="CantidadCredito" type="xs:int" />
+      <xs:element minOccurs="0" name="CantidadRechazado" type="xs:int" />
+      <xs:element minOccurs="0" name="CantidadTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoCFE" type="xs:short" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosCantidadCFE" nillable="true" type="tns:DatosCantidadCFE" />
+  <xs:complexType name="ArrayOfDatosMontoVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosMontoVenta" nillable="true" type="tns:DatosMontoVenta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosMontoVenta" nillable="true" type="tns:ArrayOfDatosMontoVenta" />
+  <xs:complexType name="DatosMontoVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Moneda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MontoEspoYAsim" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoIVAOtra" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoIVASuspenso" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoIVATasaBasica" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoIVATasaMin" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoImpuestoPercepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNetoIVATasaBasica" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNetoIVATasaMin" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNetoIVATasaOtra" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNoFacturable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNoGravado" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoTotalRetenido" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosMontoVenta" nillable="true" type="tns:DatosMontoVenta" />
+  <xs:complexType name="ArrayOfDatosResumenCAE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosResumenCAE" nillable="true" type="tns:DatosResumenCAE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosResumenCAE" nillable="true" type="tns:ArrayOfDatosResumenCAE" />
+  <xs:complexType name="DatosResumenCAE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PrimerNro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PrimerSerie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCFE" type="xs:short" />
+      <xs:element minOccurs="0" name="UltimaJornadNro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UltimaJornadaSerie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UltimoNro" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UltimoSerie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosResumenCAE" nillable="true" type="tns:DatosResumenCAE" />
+  <xs:complexType name="ArrayOfDatosResumenCFE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosResumenCFE" nillable="true" type="tns:DatosResumenCFE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosResumenCFE" nillable="true" type="tns:ArrayOfDatosResumenCFE" />
+  <xs:complexType name="DatosResumenCFE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Moneda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MontoNoFacturable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoTotalRetenido" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCFE" type="xs:short" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatosResumenCFE" nillable="true" type="tns:DatosResumenCFE" />
+</xs:schema>

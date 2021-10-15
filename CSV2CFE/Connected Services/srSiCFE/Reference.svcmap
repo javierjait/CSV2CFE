@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3ce25496-537e-4d23-9af6-3d56b126e87c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://testing.cloud.sicfe.uy:8081/sicfe/services/sicfe.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="sicfe.xsd" MetadataType="Schema" ID="f6a16985-6774-4156-9c5d-faf079b56144" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd1" />
+    <MetadataFile FileName="sicfe1.xsd" MetadataType="Schema" ID="26b7c558-621c-4ba8-8272-6a58661f633e" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd3" />
+    <MetadataFile FileName="ImpSICFEEmisor.wsdl" MetadataType="Wsdl" ID="45f95044-7cbc-40e0-9fa4-2d7b60113c20" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?wsdl" />
+    <MetadataFile FileName="sicfe2.xsd" MetadataType="Schema" ID="623ec0e5-9553-44e3-97fc-4a34149a107e" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd0" />
+    <MetadataFile FileName="sicfe3.xsd" MetadataType="Schema" ID="e12cd4fe-e789-4dbb-8a1a-242f6dfd0d0d" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd2" />
+    <MetadataFile FileName="sicfe.disco" MetadataType="Disco" ID="953949fb-fc45-4c5c-89c0-0e260b7326c0" SourceId="1" SourceUrl="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

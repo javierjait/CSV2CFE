@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SICFEContract" />
+  <xs:import schemaLocation="http://testing.cloud.sicfe.uy:8081/sicfe/Services/sicfe.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="EnvioCFE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="devolverQR" type="xs:boolean" />
+        <xs:element minOccurs="0" name="sizeQR" type="xs:int" />
+        <xs:element minOccurs="0" name="imprime" type="xs:int" />
+        <xs:element minOccurs="0" name="recurso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="template" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="devolverXML" type="xs:boolean" />
+        <xs:element minOccurs="0" name="erpPideValidacion" type="xs:boolean" />
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnvioCFEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="EnvioCFEResult" nillable="true" type="q1:SICFERespuestaEnvioCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnvioCFEConReceptor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="devolverQR" type="xs:boolean" />
+        <xs:element minOccurs="0" name="sizeQR" type="xs:int" />
+        <xs:element minOccurs="0" name="imprime" type="xs:int" />
+        <xs:element minOccurs="0" name="impresora" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="template" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="versionXSD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaEnvioCorreo" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnvioCFEConReceptorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="EnvioCFEConReceptorResult" nillable="true" type="q2:SICFERespuestaEnvioCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEnvioCFE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEnvioCFEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ValidarEnvioCFEResult" nillable="true" type="q3:SICFERespuestaEnvioCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazarCFERecibido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_rucEmisor" type="xs:long" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_idCFE" nillable="true" type="q4:IdCFE" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_motivosRechazo" nillable="true" type="q5:ArrayOfRechazoAcuseRecibo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazarCFERecibidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="RechazarCFERecibidoResult" nillable="true" type="q6:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptarCFERecibido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_rucEmisor" type="xs:long" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_idCFE" nillable="true" type="q7:IdCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptarCFERecibidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="AceptarCFERecibidoResult" nillable="true" type="q8:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_idCFE" nillable="true" type="q9:IdCFE" />
+        <xs:element minOccurs="0" name="p_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="template" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerPDFResult" nillable="true" type="q10:SICFERespuestaBuffer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDFSinProcesar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoCFE" type="xs:int" />
+        <xs:element minOccurs="0" name="template" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDFSinProcesarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerPDFSinProcesarResult" nillable="true" type="q11:SICFERespuestaBuffer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXML_DGI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_idCFE" nillable="true" type="q12:IdCFE" />
+        <xs:element minOccurs="0" name="p_tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXML_DGIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerXML_DGIResult" nillable="true" type="q13:SICFERespuestaObtenerXML" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRecursosImpresion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRecursosImpresionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerRecursosImpresionResult" nillable="true" type="q14:RespuestaObtenerRecursosImpresion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reimprimir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_ID" nillable="true" type="q15:IdCFE" />
+        <xs:element minOccurs="0" name="impresora" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nroImpresiones" type="xs:int" />
+        <xs:element minOccurs="0" name="template" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReimprimirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ReimprimirResult" nillable="true" type="q16:SICFERespuestaReimpresion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEsRecibidos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_desde" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_hasta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rucEmisor" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEsRecibidosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCFEsRecibidosResult" nillable="true" type="q17:RespuestaObtenerCFEsRecibidos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarReceptoresNoElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_tenant" nillable="true" type="xs:string" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="p_datoReceptor" nillable="true" type="q18:DataReceptorNoElectronico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarReceptoresNoElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ActualizarReceptoresNoElectronicosResult" nillable="true" type="q19:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerReceptoresNoElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerodoc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipodoc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerReceptoresNoElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerReceptoresNoElectronicosResult" nillable="true" type="q20:RespuestaObtenerReceptoresNoElectronicos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEsRecibidosExtendido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_desde" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_hasta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="devolverXML" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rucEmisor" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEsRecibidosExtendidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCFEsRecibidosExtendidoResult" nillable="true" type="q21:RespuestaObtenerCFEsRecibidosExtendido" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarCFE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="erpPideValidacion" type="xs:boolean" />
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarCFEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ConfirmarCFEResult" nillable="true" type="q22:SICFERespuestaEnvioCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReservarNro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReservarNroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ReservarNroResult" nillable="true" type="q23:ReservarNro" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingSICFEEmisor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingSICFEEmisorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="PingSICFEEmisorResult" nillable="true" type="q24:SICFERespuestaPing" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularRango">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_tipo" type="xs:int" />
+        <xs:element minOccurs="0" name="p_serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_desde" type="xs:int" />
+        <xs:element minOccurs="0" name="p_hasta" type="xs:int" />
+        <xs:element minOccurs="0" name="p_sucursal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularRangoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="AnularRangoResult" nillable="true" type="q25:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularNumeracion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_tipo" type="xs:int" />
+        <xs:element minOccurs="0" name="p_serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p_desde" type="xs:int" />
+        <xs:element minOccurs="0" name="p_hasta" type="xs:int" />
+        <xs:element minOccurs="0" name="p_sucursal" type="xs:int" />
+        <xs:element minOccurs="0" name="es_pre_numerado" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularNumeracionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="AnularNumeracionResult" nillable="true" type="q26:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEstadoCFE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pClave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pTenant" nillable="true" type="xs:string" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="pIDCFE" nillable="true" type="q27:IdCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEstadoCFEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerEstadoCFEResult" nillable="true" type="q28:SICFERespuestaEstadoCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCAE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCAEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCAEResult" nillable="true" type="q29:RespuestaObtenerCAE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTemplatesImpresion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTemplatesImpresionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerTemplatesImpresionResult" nillable="true" type="q30:ObtenerTemplateImpresionRespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsolidarComprobantes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsolidarComprobantesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ConsolidarComprobantesResult" nillable="true" type="q31:SicfeRespuestaConsolidar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerProveedoresElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerProveedoresElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerProveedoresElectronicosResult" nillable="true" type="q32:SICFERespuestaObtenerProveedoresElectronicos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerClientesElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerClientesElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerClientesElectronicosResult" nillable="true" type="q33:SICFERespuestaObtenerClientesElectronicos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerVersionResult" nillable="true" type="q34:SICFERespuestaVersion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarCFERecibido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" type="xs:short" />
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numero" type="xs:long" />
+        <xs:element minOccurs="0" name="rucemisor" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarCFERecibidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ConfirmarCFERecibidoResult" nillable="true" type="q35:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesconfirmarCFERecibido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" type="xs:short" />
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numero" type="xs:long" />
+        <xs:element minOccurs="0" name="rucemisor" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesconfirmarCFERecibidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="DesconfirmarCFERecibidoResult" nillable="true" type="q36:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerInfoCertificados">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerInfoCertificadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerInfoCertificadosResult" nillable="true" type="q37:SICFERespuestaCertificados" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EsEmisorReceptorElectronico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ruc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EsEmisorReceptorElectronicoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="EsEmisorReceptorElectronicoResult" nillable="true" type="q38:SICFERespuestaEmisorReceptorElectronico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDatosDeEmisorReceptor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ruc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDatosDeEmisorReceptorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerDatosDeEmisorReceptorResult" nillable="true" type="q39:SICFERespuestaDatosEmisorReceptor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEPorReferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="referenciaERP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="devolverImagenQR" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="devolverXML" nillable="true" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEPorReferenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCFEPorReferenciaResult" nillable="true" type="q40:SICFERespuestaObtenerCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEPorID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" type="xs:short" />
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numero" type="xs:long" />
+        <xs:element minOccurs="0" name="devolverImagenQR" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="devolverXML" nillable="true" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCFEPorIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCFEPorIDResult" nillable="true" type="q41:SICFERespuestaObtenerCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCierreDeCaja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="operador" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="puntoVenta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:short" />
+        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCierreDeCajaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ObtenerCierreDeCajaResult" nillable="true" type="q42:SICFERespuestaInformeCierreDeCaja" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarCAE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param_tenant" nillable="true" type="xs:string" />
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListaCAE" nillable="true" type="q43:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarCAEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="AgregarCAEResult" nillable="true" type="q44:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReenvioComprobante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numero" type="xs:int" />
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoCfe" type="xs:int" />
+        <xs:element minOccurs="0" name="emails" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="enviarPDF" type="xs:boolean" />
+        <xs:element minOccurs="0" name="enviarXml" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReenvioComprobanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="ReenvioComprobanteResult" nillable="true" type="q45:SICFERespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnvioCFESinFirmar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nomusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenant" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cfexml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="refErp" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnvioCFESinFirmarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SICFEContract" minOccurs="0" name="EnvioCFESinFirmarResult" nillable="true" type="q46:SICFERespuestaEnvioCFE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
