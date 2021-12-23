@@ -49,6 +49,7 @@ namespace CSV2CFE
         static private string _nomUsuario;
         static private string _clave;
         static private string _tenant;
+        static private string _adenda;
         static private readonly string _pathEnviados = "Enviados";
         static private string _pathFacturas = "Facturas_PDF\\";
         //static private readonly decimal _ui = 4.7846M; // Unidad indexada
@@ -87,14 +88,20 @@ namespace CSV2CFE
             _nomUsuario = ConfigurationManager.AppSettings["usuario"];
             _clave = ConfigurationManager.AppSettings["clave"];
             _tenant = ConfigurationManager.AppSettings["tenant"];
+            _adenda = ConfigurationManager.AppSettings["adenda"];
             string configFolder = ConfigurationManager.AppSettings["carpetaPDF"];
-            if (configFolder != null && Directory.Exists(configFolder)) // Verifica existencia de la carpetaPDF
+            if (configFolder != null) // Agrega la barra al final de la carpeta si no existe
             {
                 // Agrega la barra final a la carpeta si es necesario
                 if (configFolder.EndsWith("\\"))
                     _pathFacturas = configFolder;
                 else
                     _pathFacturas = configFolder + "\\";
+            }
+
+            if (!Directory.Exists(_pathFacturas)) // Crea carpeta si no existe
+            {
+                Directory.CreateDirectory(_pathFacturas);
             }
         }
 
@@ -105,13 +112,21 @@ namespace CSV2CFE
         static private bool CheckMiddleware()
         {
             srSiCFE.SICFEEmisorClient ws = new srSiCFE.SICFEEmisorClient();
-            var res = ws.PingSICFEEmisor(_nomUsuario, _clave, _tenant);
-            if (res.Codigo != 0)
+            try
             {
-                AddToLog(res.Descripcion);
-            }
+                var res = ws.PingSICFEEmisor(_nomUsuario, _clave, _tenant);
+                if (res.Codigo != 0)
+                {
+                    AddToLog(res.Descripcion);
+                }
 
-            return res.Codigo == 0;
+                return res.Codigo == 0;
+            }
+            catch (Exception ex)
+            {
+                AddToLog(ex.Message);
+                return false;
+            }
         }
 
         /// <summary>
@@ -382,130 +397,155 @@ namespace CSV2CFE
             Receptor_Tck receptor = new Receptor_Tck();
             Totales totales = new Totales();
 
-            idDoc.TipoCFE = IdDoc_TckTipoCFE.Item101;
-            idDoc.Nro = "1";
-            idDoc.Serie = "1";
-            idDoc.FchEmis = DateTime.Today; // Fecha de hoy
+            string Xml = "";
 
-            emisor.RUCEmisor = ConfigurationManager.AppSettings["RUCEmisor"]; // settings de la aplicación
-            emisor.RznSoc = ConfigurationManager.AppSettings["RznSoc"]; // settings de la aplicación
-
-            string CdgDGISucur = ConfigurationManager.AppSettings["CdgDGISucur"]; // settings de la aplicación
-            if (string.IsNullOrEmpty(CdgDGISucur))
+            try
             {
-                emisor.CdgDGISucur = "3";
-            }
-            else
-            {
-                emisor.CdgDGISucur = CdgDGISucur;
-            }
 
-            emisor.DomFiscal = ConfigurationManager.AppSettings["DomFiscal"]; // settings de la aplicación
-            emisor.Ciudad = ConfigurationManager.AppSettings["Ciudad"];       // settings de la aplicación
-            emisor.Departamento = ConfigurationManager.AppSettings["Departamento"]; // settings de la aplicación
-            emisor.InfoAdicionalEmisor = ConfigurationManager.AppSettings["InfoAdicional"]; // settings de la aplicación
+                idDoc.TipoCFE = IdDoc_TckTipoCFE.Item101;
+                idDoc.Nro = "1";
+                idDoc.Serie = "1";
+                idDoc.FchEmis = DateTime.Today; // Fecha de hoy
 
-            receptor.RznSocRecep = factura.Cliente;
-            receptor.CiudadRecep = factura.Localidad;
-            receptor.PaisRecep = factura.Pais;
+                emisor.RUCEmisor = ConfigurationManager.AppSettings["RUCEmisor"]; // settings de la aplicación
+                emisor.RznSoc = ConfigurationManager.AppSettings["RznSoc"]; // settings de la aplicación
 
-            receptor.CP = factura.CP;
-            receptor.DeptoRecep = factura.Departamento;
-            receptor.DirRecep = factura.Domicilio;
-            receptor.PaisRecep = factura.Pais;
-            if (!string.IsNullOrWhiteSpace(factura.IDFisc)) // Verifica el ID fiscal
-            {
+                string CdgDGISucur = ConfigurationManager.AppSettings["CdgDGISucur"]; // settings de la aplicación
+                if (string.IsNullOrEmpty(CdgDGISucur))
+                {
+                    emisor.CdgDGISucur = "3";
+                }
+                else
+                {
+                    emisor.CdgDGISucur = CdgDGISucur;
+                }
+
+                emisor.DomFiscal = ConfigurationManager.AppSettings["DomFiscal"]; // settings de la aplicación
+                emisor.Ciudad = ConfigurationManager.AppSettings["Ciudad"];       // settings de la aplicación
+                emisor.Departamento = ConfigurationManager.AppSettings["Departamento"]; // settings de la aplicación
+                emisor.InfoAdicionalEmisor = ConfigurationManager.AppSettings["InfoAdicional"]; // settings de la aplicación
+
+                receptor.RznSocRecep = factura.Cliente;
+                receptor.CiudadRecep = factura.Localidad;
+                receptor.PaisRecep = factura.Pais;
+
+                //receptor.CP = factura.CP;
                 try
                 {
-                    receptor.CodPaisRecep = (CodPaisType)Enum.Parse(typeof(CodPaisType), factura.CodPais.ToUpper().Substring(0, 2));
-                    receptor.CodPaisRecepSpecified = true;
+                    receptor.CP = Regex.Replace(factura.CP, @"\D", "");
+                }
+                catch
+                {
+                    AddToLog("CP: Valor inválido o nulo");
+                    return "";
+                }
+                receptor.DeptoRecep = factura.Departamento;
+                receptor.DirRecep = factura.Domicilio;
+                receptor.PaisRecep = factura.Pais;
+                if (!string.IsNullOrWhiteSpace(factura.IDFisc)) // Verifica el ID fiscal
+                {
+                    try
+                    {
+                        receptor.CodPaisRecep = (CodPaisType)Enum.Parse(typeof(CodPaisType), factura.CodPais.ToUpper().Substring(0, 2));
+                        receptor.CodPaisRecepSpecified = true;
+                    }
+                    catch (Exception e)
+                    {
+                        AddToLog(e.Message);
+                        return ""; // Si el código de país no es válido devuelve XML en blanco
+                    }
+                    if (factura.CodPais == "UY")
+                    {
+                        receptor.ItemElementName = ItemChoiceType.DocRecep;
+                        string doc = Regex.Replace(factura.IDFisc, @"[^\d]", ""); // solo números
+                        if (isRutValid(doc)) // Verifica el RUC
+                        {
+                            receptor.TipoDocRecep = DocType.Item2; // RUC
+                            receptor.Item = doc.Substring(0, Math.Min(12, doc.Length));
+                        }
+                        else
+                        {
+                            receptor.TipoDocRecep = DocType.Item3; // Cedula
+                            receptor.Item = doc.Substring(0, Math.Min(20, doc.Length));
+                        }
+                    }
+                    else
+                    {
+                        receptor.TipoDocRecep = DocType.Item7;
+                        receptor.ItemElementName = ItemChoiceType.DocRecepExt;
+                        receptor.Item = factura.IDFisc.Substring(0, Math.Min(20, factura.IDFisc.Length)); // hast 20 caracteres
+                    }
+                    receptor.TipoDocRecepSpecified = true;
+                }
+
+                totales.CantLinDet = "1";
+                try
+                {
+                    totales.TpoMoneda = (TipMonType)Enum.Parse(typeof(TipMonType), factura.Moneda); //TipMonType.UYU;
                 }
                 catch (Exception e)
                 {
                     AddToLog(e.Message);
-                    return ""; // Si el código de país no es válido devuelve XML en blanco
                 }
-                if (factura.CodPais == "UY")
+                totales.MntNoGrv = factura.Monto;
+                totales.MntNoGrvSpecified = true;
+                totales.MntTotal = factura.Monto;
+                totales.MntPagar = factura.Monto;
+                if (totales.TpoMoneda != TipMonType.UYU)
                 {
-                    receptor.ItemElementName = ItemChoiceType.DocRecep;
-                    string doc = Regex.Replace(factura.IDFisc, @"[^\d]", ""); // solo números
-                    if (isRutValid(doc)) // Verifica el RUC
-                    {
-                        receptor.TipoDocRecep = DocType.Item2; // RUC
-                        receptor.Item = doc.Substring(0, Math.Min(12, doc.Length));
-                    }
-                    else
-                    {
-                        receptor.TipoDocRecep = DocType.Item3; // Cedula
-                        receptor.Item = doc.Substring(0, Math.Min(20, doc.Length));
-                    }
+                    totales.TpoCambio = factura.Cotizacion; // Ver tipo de cambio
+                    totales.TpoCambioSpecified = true;
+                }
+
+                encabezado.IdDoc = idDoc;
+                encabezado.Emisor = emisor;
+                encabezado.Receptor = receptor;
+                encabezado.Totales = totales;
+
+                det.NroLinDet = "1";
+                det.MontoItem = factura.Monto;
+                det.NomItem = factura.Descripcion.Substring(0, Math.Min(80, factura.Descripcion.Length));
+                det.PrecioUnitario = factura.Monto;
+                det.UniMed = "N/A";
+                det.Cantidad = 1;
+
+                List<Item_Det_Fact> detalle = new List<Item_Det_Fact>();
+                detalle.Add(det);
+
+                CAEdata.CAE_ID = "";
+                CAEdata.DNro = "";
+                CAEdata.HNro = "";
+                /*CAEdata.CAEEspecial = "0";
+                CAEdata.CAEEspecialSpecified = true;
+                CAEdata.CausalCAEEsp = "0";*/
+                CAEdata.FecVenc = "";
+
+                cfeTck.Encabezado = encabezado;
+                cfeTck.Detalle = detalle.ToArray();
+                cfeTck.CAEData = CAEdata;
+                cfeDT.Item = cfeTck;
+                cfe.CFE = cfeDT;
+
+                if (string.IsNullOrEmpty(_adenda))
+                {
+                    cfe.Adenda = new Object();
                 }
                 else
                 {
-                    receptor.TipoDocRecep = DocType.Item7;
-                    receptor.ItemElementName = ItemChoiceType.DocRecepExt;
-                    receptor.Item = factura.IDFisc.Substring(0, Math.Min(20, factura.IDFisc.Length)); // hast 20 caracteres
+                    cfe.Adenda = _adenda;
                 }
-                receptor.TipoDocRecepSpecified = true;
+
+                XmlSerializer serializer = new XmlSerializer(typeof(CFE_Empresas_Type));
+
+                using (var st = new Utf8StringWriter())
+                {
+                    serializer.Serialize(st, cfe); // Serializa el XML
+                    Xml = st.ToString();           // XML como string
+                }
             }
-
-            totales.CantLinDet = "1";
-            try
+            catch (Exception ex)
             {
-                totales.TpoMoneda = (TipMonType)Enum.Parse(typeof(TipMonType), factura.Moneda); //TipMonType.UYU;
-            }
-            catch (Exception e)
-            {
-                AddToLog(e.Message);
-            }
-            totales.MntNoGrv = factura.Monto;
-            totales.MntNoGrvSpecified = true;
-            totales.MntTotal = factura.Monto;
-            totales.MntPagar = factura.Monto;
-            if (totales.TpoMoneda != TipMonType.UYU)
-            {
-                totales.TpoCambio = factura.Cotizacion; // Ver tipo de cambio
-                totales.TpoCambioSpecified = true;
-            }
-
-            encabezado.IdDoc = idDoc;
-            encabezado.Emisor = emisor;
-            encabezado.Receptor = receptor;
-            encabezado.Totales = totales;
-
-            det.NroLinDet = "1";
-            det.MontoItem = factura.Monto;
-            det.NomItem = factura.Descripcion.Substring(0, Math.Min(80, factura.Descripcion.Length));
-            det.PrecioUnitario = factura.Monto;
-            det.UniMed = "N/A";
-            det.Cantidad = 1;
-
-            List<Item_Det_Fact> detalle = new List<Item_Det_Fact>();
-            detalle.Add(det);
-
-            CAEdata.CAE_ID = "";
-            CAEdata.DNro = "";
-            CAEdata.HNro = "";
-            /*CAEdata.CAEEspecial = "0";
-            CAEdata.CAEEspecialSpecified = true;
-            CAEdata.CausalCAEEsp = "0";*/
-            CAEdata.FecVenc = "";
-
-            cfeTck.Encabezado = encabezado;
-            cfeTck.Detalle = detalle.ToArray();
-            cfeTck.CAEData = CAEdata;
-            cfeDT.Item = cfeTck;
-            cfe.CFE = cfeDT;
-            cfe.Adenda = new Object();
-
-            string Xml = "";
-
-            XmlSerializer serializer = new XmlSerializer(typeof(CFE_Empresas_Type));
-
-            using (var st = new Utf8StringWriter()) 
-            {
-                serializer.Serialize(st, cfe); // Serializa el XML
-                Xml = st.ToString();           // XML como string
+                AddToLog(ex.Message);
             }
 
             return Xml;
@@ -560,7 +600,14 @@ namespace CSV2CFE
         /// <param name="msg">Mensaje a escribir</param>
         static private void AddToLog(string msg)
         {
-            File.AppendAllText("log.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {msg}\n"); // Escribe fecha/hora y mensaje
+            try
+            {
+                File.AppendAllText("log.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {msg}\n"); // Escribe fecha/hora y mensaje
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         static private string GetEndpointAddress()
