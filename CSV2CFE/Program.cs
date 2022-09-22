@@ -263,6 +263,7 @@ namespace CSV2CFE
                                 break;
                             case "MONTO":
                                 decimal.TryParse(fields[column.Value].Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out monto);
+                                monto = Math.Round(monto, 2);
                                 break;
                             case "COTIZACION":
                                 JSONValue cotizTmp = JsonConvert.DeserializeObject<JSONValue>(fields[column.Value]);
@@ -493,7 +494,7 @@ namespace CSV2CFE
                 totales.MntPagar = factura.Monto;
                 if (totales.TpoMoneda != TipMonType.UYU)
                 {
-                    totales.TpoCambio = factura.Cotizacion; // Ver tipo de cambio
+                    totales.TpoCambio = Math.Round(factura.Cotizacion, 3); // Ver tipo de cambio
                     totales.TpoCambioSpecified = true;
                 }
 
@@ -604,9 +605,9 @@ namespace CSV2CFE
             {
                 File.AppendAllText("log.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {msg}\n"); // Escribe fecha/hora y mensaje
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
         }
 
